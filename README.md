@@ -1,6 +1,6 @@
 ## Music
 
-##基 express + mongoDB  开发的一个音乐播放器
+##基 express + mongoDB  开发的一个博客
 
 
 ## 功能实现

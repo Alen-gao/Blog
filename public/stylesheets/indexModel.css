@@ -1,0 +1,43 @@
+/* CSS Document */
+
+
+/*  content Model style */
+
+@media screen  and (max-width: 860px){
+	.body_wid{
+	/*width: 1200px;*/
+	width: 100%;
+  }
+  .main{
+  	width: 100%;
+  }
+  .logo{
+  	display: none;
+  }
+  .nav_ul .nav_li{
+		height: 3.2rem;
+		line-height: 3.2rem;
+		font-size: 18px;
+		float: left;
+		border-left: 1px solid #393d46;
+		border-right: 1px solid #393d46;
+	}
+	.content .cont-left{
+		border-right: none;
+		margin-right: 0;
+	}
+	.content .cont-right{
+		display: none;
+	}
+	.foot_dd{
+		display: none;
+	}
+}
+@media screen  and (max-width: 480px){
+	.Release-date{
+		display: none;
+	}
+	.userphoto{
+		display: none;
+	}
+}

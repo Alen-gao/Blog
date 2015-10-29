@@ -1,0 +1,1 @@
+D:\mongodb\bin\mongod -dbpath E:\myjob\nodejs\Blog\db
