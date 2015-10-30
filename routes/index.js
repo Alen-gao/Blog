@@ -1,9 +1,11 @@
 var express = require('express');
 var fs = require('fs');
 var  mongodb = require('mongodb');
+var async= require('async');
 var  server  = new mongodb.Server('localhost', 27017, {auto_reconnect:true});
 var  db = new mongodb.Db('mydb', server, {safe:true});
 var router = express.Router();
+
 
 var multer  = require('multer');
 var upload = multer({ dest: '/public/images/pic'});
@@ -43,6 +45,9 @@ router.post('/views/main', function(req, res){
 					}
 					collection.findOne(obj, function(err, docs){
 						if(!err && docs){
+							//将当前的用户写到会话中
+				            // req.session.user = currentUser;
+				            // req.flash('path', targetPath);
 							// res.render('admin', { title: 'Express', layout: false});
 							res.send({ok:1, data:docs});
 						}
@@ -112,33 +117,24 @@ var cpUploads = upload.fields([
 ])
 router.post('/file-upload', cpUploads, function(req, res){
 	//console.log(req.files);
-	 var tmpPath = req.files.thumbnail[0].path;
-    //移动到指定的目录，一般放到public的images文件下面
-    //在移动的时候确定路径已经存在，否则会报错
-     var targetPath = 'public/images/pic/' + req.files.thumbnail[0].originalname;
-    console.log(tmpPath, targetPath);
-    
-    fs.rename(tmpPath, targetPath , function(err) {
-        if(err){
-            throw err;
-        }
-        //删除临时文件
-        fs.unlink(tmpPath, function(){
-            if(err) {
-                throw err;
-            }
-            //将当前的用户写到会话中
-            // req.session.user = currentUser;
-            // req.flash('path', targetPath);
-            res.redirect('/admin');
-        })
-    })
-	//链接数据库查询用户
-	// var obj = {
-	// 	user: req.files.thumbnail.path,
- //    	src: req.files.thumbnail.name	
-	// }
-	// console.log(obj);
+	async.each(req.files.thumbnail,function(row, next){
+		var tmpPath = row.path;
+		var targetPath = 'public/images/pic/' + row.originalname;
+
+		fs.rename(tmpPath, targetPath , function(err) {
+	        if(err) return next(err)
+	        //删除临时文件
+	        fs.unlink(tmpPath, function(){
+	            if(err) return next(err);
+	            next()
+	        })
+	    })
+
+	}, function(err){
+		if (err) return res.redirect('/error')
+        res.redirect('/admin');
+	});
+	
 });
 
 module.exports = router;

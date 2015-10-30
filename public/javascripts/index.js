@@ -54,4 +54,24 @@ $(function(){
     		}
     	});
     });
+
+    //选取相册效果
+    var chooser = document.getElementById('loadPhoto');
+    chooser.addEventListener('change', function (event) {
+        var files = this.files;
+        $('.contRight').append("<p>"+this.files+"</p>");
+    });
+    
+    // $(document).on('change', '#loadPhoto', function(){
+
+    //     var files = $(this);
+    //     window.console.log('files', files);
+    //     // for (var i = 0; i < files.length; ++i){
+    //     //     var time = audioTime(files[i].path);
+    //     //     var musicName = files[i].name.substring(0,files[i].name.indexOf('.'));
+    //     //     apendText(musicName,files[i].path);
+    //     // }
+
+    // });
+
 });
