@@ -1,3 +1,4 @@
+var url = 'http://10.60.217.151:3000/'
 $(function(){
     init.HighLight('.nume a');
     init.HighLight('.contLeft a');
@@ -9,15 +10,16 @@ $(function(){
     	var content = $('.BlogCont').val();
 
     	$.ajax({
-    		url: 'http://localhost:3000/Publish/Article',
+    		url:  url + '/Publish/Article',
     		type: 'POST',
     		data: {"title": title, "content": content},
     		success: function(data){
     			if(!data.ok){
-    				console.log('没有此用户!');
+    				console.log('发表失败!');
     			}
     			else{
                     alert("发表成功！");
+                    location.href = '/admin';
     			}
     		},
     		error: function(err){

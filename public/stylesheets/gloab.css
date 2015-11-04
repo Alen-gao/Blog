@@ -5,7 +5,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 	border: 0;
 }
 body {
-	font-family: 微软雅黑;
+	font-family: '微软雅黑';
 	color: #666;
 	font-size:100%;
 	overflow-x: hidden;
@@ -52,3 +52,43 @@ a:hover {
 }
 ::-moz-selection{background:#2fad6b; color:#fff;} 
 ::selection {background:#2fad6b; color:#fff;} 
+
+/* 公共样式 */
+.al-warning-box{
+	min-width: 260px;
+	width: auto;
+	height: 30px;
+	padding: 5px 10px;
+	color: #666;
+	background-color: #fff1cf;
+	border: 1px solid #ffd991; 
+	box-sizing: border-box;
+}
+.al-ico{
+	width: 20px;
+	height: 20px;
+	border-radius: 20px;
+	background-color: #7cd192;
+	position: relative;
+	display: inline-block;
+}
+.al-ico:before{
+	content: '';
+	width: 2px;
+	height: 8px;
+	position: absolute;
+	background-color: #FFF;
+	transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
+};
+.al-ico:before{
+	content: '';
+	width: 2px;
+	height: 4px;
+	position: absolute;
+	background-color: #FFF;
+	transform: rotate(-45deg);
+	-o-transform: rotate(-45deg);
+	-webkit-transform: rotate(-45deg);
+};

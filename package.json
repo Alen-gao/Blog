@@ -1,6 +1,6 @@
 {
   "name": "Blog",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
@@ -14,7 +14,7 @@
     "ejs": "~0.8.5",
     "express": "~4.2.0",
     "lodash": "^3.10.1",
-    "mongodb": "^2.0.46",
+    "mongodb": "*",
     "morgan": "^1.0.1",
     "multer": "^1.1.0",
     "static-favicon": "^1.0.2"
